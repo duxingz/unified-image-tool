@@ -1,0 +1,31 @@
+# ---- 构建产物 ----
+dist/
+build/
+*.zip
+*.log
+*.bak
+*.spec.bak
+
+# ---- Python 缓存 ----
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# ---- 运行/检查输出 ----
+_ui_shots/
+
+# ---- 模型（两个 ONNX 共 88MB，随 Release 包分发，不入库）----
+models/*
+!models/README.md
+
+# ---- 个人素材（署名水印图，不入公开仓库）----
+app/stickers/*
+
+# ---- 虚拟环境 ----
+.venv/
+venv/
+env/
+
+# ---- 本地临时报告 ----
+scripts/_*.txt
