@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>Unified Image Tool 使用教程</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+    color: #2b2b3a;
+    background: #f7f5ff;
+    padding: 48px 64px 64px;
+    max-width: 1000px; margin: 0 auto;
+  }
+  .header { text-align: center; }
+  .header img { width: 96px; height: 96px; border-radius: 20px; box-shadow: 0 4px 14px rgba(0,0,0,.18); }
+  .header h1 { font-size: 44px; font-weight: 800; }
+  .header .sub { font-size: 20px; color: #8a8aa0; margin-top: 6px; text-align: left; }
+  .divider { height: 6px; border-radius: 3px; margin: 28px 0 24px;
+             background: linear-gradient(90deg, #f5923e, #f7b267, #6fc3f7); }
+  .pill { display: inline-block; padding: 8px 20px; border-radius: 999px;
+          color: #fff; font-size: 19px; font-weight: 700; margin-bottom: 24px;
+          background: linear-gradient(135deg, #f5923e, #f7b267); }
+  .card {
+    background: #ffffff; border: 1px solid #e2dcf7; border-radius: 16px;
+    padding: 22px 28px; margin-bottom: 16px;
+    box-shadow: 0 3px 10px rgba(80,70,140,.08);
+    display: flex; gap: 18px; align-items: flex-start;
+  }
+  .num { flex: 0 0 44px; width: 44px; height: 44px; border-radius: 50%;
+         color: #fff; font-size: 23px; font-weight: 800;
+         display: flex; align-items: center; justify-content: center;
+         background: linear-gradient(135deg, #f5923e, #f7b267); }
+  .card h3 { font-size: 22px; margin-bottom: 6px; }
+  .card p  { font-size: 17px; line-height: 1.75; color: #4a4a5c; }
+  code { background: #efeaff; color: #6a4fd0; padding: 2px 8px;
+         border-radius: 6px; font-family: Consolas, monospace; font-size: 15px; }
+  .note { border-radius: 14px; padding: 16px 22px; margin: 16px 0; }
+  .note p { font-size: 16px; line-height: 1.7; }
+  .note.warn  { background: #fff0e0; border: 1px solid #ffc999; }
+  .note.danger{ background: #ffeaea; border: 1px solid #ffb3b3; }
+  .tiny { font-size: 15px; color: #c0392b; font-weight: 700; margin-top: 8px; }
+  .footer { text-align: center; color: #8a8aa0; font-size: 16px; margin-top: 28px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  
+  <div><h1>Unified Image Tool</h1><div class="sub">图片批量打码整合工具 · 使用教程</div></div>
+</div>
+<div class="divider"></div>
+<span class="pill">🚀 快速上手 · 6 步开跑</span>
+
+<div class="card"><div class="num">1</div>
+  <div><h3>导入图片</h3><p>顶部「📂 导入图片 / 📁 导入文件夹」，或直接把图片/文件夹拖进窗口；
+  也支持拖入 URL、Base64、HTML 里的图片。</p></div>
+</div>
+
+<div class="note warn"><p>⚠️ <b>注意</b>：所有操作都是在程序内进行，不导出时不影响源文件。</p></div>
+
+<div class="card"><div class="num">2</div>
+  <div><h3>认识界面与排序</h3><p>左侧缩略图列表可拖动排序、右键重命名（显示名）、看打码角标与导出顺序序号；
+  中间画布滚轮缩放、拖动平移、双击空白适配；右侧工具面板（编辑 / 自动打码 / 贴纸 / 批量）。</p></div>
+</div>
+<div class="card"><div class="num">3</div>
+  <div><h3>手动打码</h3><p>右侧「编辑」页选工具：画笔 / 矩形 / 套索 / 橡皮擦，选效果
+  （模糊、马赛克、黑色线条、白色雾气、光效、像素块、贴纸）和强度，在画布上画即可实时预览。</p></div>
+</div>
+<div class="card"><div class="num">4</div>
+  <div><h3>自动打码</h3><p>右侧「编辑」页点「自动打码」按钮（或顶栏「🤖 批量自动打码」对所有图）：
+  ONNX 模型检测敏感区域并自动打码；「覆盖扩展」控制打码区域向外扩多少像素。</p></div>
+</div>
+<div class="card"><div class="num">5</div>
+  <div><h3>保存 / 导出</h3><p>顶栏「💾 保存/导出」→ 选择输出目录、命名方式（保留原文件名 / 前缀+编号 / 按当前显示名）、
+  格式、质量、缩放、是否去除元数据 → 「确认并导出」。</p>
+  <p class="tiny">注意！！保存时，在同文件夹里相同名字的图片会被直接覆盖</p>
+  </div>
+</div>
+<div class="card"><div class="num">6</div>
+  <div><h3>迷你模式速用</h3><p>顶栏「🧩 迷你模式」打开小窗口，把单张图拖进去即可快速自动打码并复制到剪贴板。</p></div>
+</div>
+
+<div class="note danger"><p>⚠️ <b>自用提醒</b>：打码强度与检测精度请按图自测；请仅在合法范围内处理内容，相关责任由使用者自行承担。</p></div>
+
+<div class="footer">—— 打码愉快！更多细节见 README.md ——</div>
+
+</body>
+</html>
