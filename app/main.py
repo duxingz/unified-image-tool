@@ -28,11 +28,25 @@ def acquire_single_instance_lock(config_dir) -> QLockFile | None:
     the shared settings). Returns the lock the caller MUST hold for the
     whole process lifetime, or None when another instance is running.
 
-    QLockFile detects stale locks from crashed processes (PID check), so a
-    hard kill never locks the user out permanently."""
-    lock = QLockFile(str(Path(config_dir) / "app.lock"))
+    v1.22.2: on a fresh machine the config dir does not exist yet and
+    QLockFile cannot create its file there — tryLock fails with UnknownError,
+    which used to be reported as "already running", bricking the FIRST launch
+    forever (save_config, the only mkdir, never got to run). The dir is now
+    created up front, and only LockFailedError (the lock file is held by a
+    live process) means "already running"; any other failure starts the app
+    WITHOUT enforcement instead of locking the user out."""
+    config_dir = Path(config_dir)
+    try:
+        config_dir.mkdir(parents=True, exist_ok=True)
+    except OSError:
+        # uncreatable dir (permissions, a file sits in the path…): run
+        # unenforced rather than show a false "already running" dialog
+        return QLockFile(str(config_dir / "app.lock"))
+    lock = QLockFile(str(config_dir / "app.lock"))
     if not lock.tryLock(0):
-        return None
+        if lock.error() == QLockFile.LockError.LockFailedError:
+            return None
+        return lock
     return lock
 
 
